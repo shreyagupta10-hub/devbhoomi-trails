@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devbhoomi Trails | Uttarakhand Travel Guide</title>
+<style>
+  :root {
+    --night: #12303a;
+    --pine:  #2f6f5e;
+    --snow:  #f7f9f8;
+    --sun:   #f2a541;
+    --ink:   #1d2b2f;
+
+   /* ===== PASTE YOUR IMAGE LINKS HERE (keep the url("...") and replace only the text inside the quotes) ===== */
+    --img-nainital:  url("https://s7ap1.scene7.com/is/image/incredibleindia/naini-lake-nainital-uttarakhand-2-attr-hero?qlt=82&ts=1742153737104");
+    --img-rishikesh: url("https://hblimg.mmtcdn.com/content/hubble/img/desttvimg/mmt/destination/m_Rishikesh_tv_destination_img_2_l_664_996.jpg");
+    --img-mussoorie: url("https://clubmahindra.gumlet.io/blog/media/section_images/shuttersto-17534db46414b71.jpg?w=376&dpr=2.6");
+    --img-auli:      url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyn13H8YEmr5ac9AXt-qUkkKxipTYWWNhGLkvqgB4W9A14TeibR_Twk8o&s=10");
+    --img-corbett:   url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrjPEGyjWtlZcRGc-68gKNHp9c1AgudBQbhUPxdK359zXcJAYYV6neKHMd&s=10");
+    /* ============================================================================================== */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Segoe UI", Tahoma, sans-serif; background: var(--snow); color: var(--ink); line-height: 1.7; }
+  h1, h2, h3 { font-family: Georgia, "Times New Roman", serif; line-height: 1.2; }
+  a { color: inherit; }
+
+  /* MENU BAR */
+  nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center;
+        padding: 14px 6%; background: var(--night); color: white; }
+  nav b { font-family: Georgia, serif; font-size: 1.2rem; }
+  nav div a { margin-left: 22px; text-decoration: none; font-size: .95rem; }
+  nav div a:hover { color: var(--sun); }
+
+  /* TOP BANNER WITH MOUNTAINS */
+  .hero { background: linear-gradient(var(--night), #3b7d86 75%, #f6c78b); color: white; padding: 110px 6% 0; position: relative; overflow: hidden; }
+  .hero h1 { font-size: clamp(2.4rem, 7vw, 4.6rem); max-width: 720px; }
+  .hero p { max-width: 520px; margin: 18px 0 28px; font-size: 1.1rem; opacity: .92; }
+  .btn { display: inline-block; background: var(--sun); color: var(--night); padding: 13px 28px; border-radius: 30px;
+         font-weight: 700; text-decoration: none; }
+  .btn:hover { background: white; }
+  .mountains { height: 170px; margin: 40px -6% 0; position: relative; }
+  .mountains span { position: absolute; bottom: 0; background: var(--night); clip-path: polygon(50% 0, 100% 100%, 0 100%); }
+  .mountains span:nth-child(1) { left: 2%;  width: 34%; height: 150px; background: #24505a; }
+  .mountains span:nth-child(2) { left: 26%; width: 40%; height: 170px; background: var(--pine); }
+  .mountains span:nth-child(3) { left: 58%; width: 38%; height: 140px; background: #24505a; }
+  .mountains span:nth-child(4) { left: 0;   width: 100%; height: 40px; background: var(--snow); clip-path: none; }
+
+  section { padding: 70px 6%; max-width: 1100px; margin: auto; }
+  h2 { font-size: 2rem; margin-bottom: 8px; color: var(--night); }
+  .lead { max-width: 560px; margin-bottom: 34px; color: #4b5f63; }
+
+  /* PLACES WITH PHOTOS */
+  .places { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .place { border-radius: 16px; padding: 26px; color: white; min-height: 240px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .place.big { grid-column: span 2; min-height: 320px; }
+  .place h3 { font-size: 1.5rem; }
+  .place small { opacity: .95; }
+
+  .p1 { background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.05)), var(--img-nainital) center/cover, #2f6f5e; }
+  .p2 { background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.05)), var(--img-rishikesh) center/cover, #2f6f5e; }
+  .p3 { background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.05)), var(--img-mussoorie) center/cover, #2f6f5e; }
+  .p4 { background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.05)), var(--img-auli) center/cover, #2f6f5e; }
+  .p5 { background: linear-gradient(to top, rgba(0,0,0,.75), rgba(0,0,0,.05)), var(--img-corbett) center/cover, #2f6f5e; }
+
+  /* BEST TIME TABLE */
+  .tablebox { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; }
+  th { background: var(--pine); color: white; text-align: left; }
+  th, td { padding: 14px 18px; }
+  tr:nth-child(even) td { background: #eef4f2; }
+
+  /* TRIP PLANNER */
+  .steps { border-left: 3px solid var(--sun); padding-left: 26px; }
+  .steps div { margin-bottom: 26px; }
+  .steps h3 { color: var(--pine); font-size: 1.2rem; }
+
+  /* TEAM (names only) */
+  .team { display: flex; flex-wrap: wrap; gap: 20px; }
+  .member { background: white; border-left: 4px solid var(--sun); border-radius: 8px; padding: 14px 22px; min-width: 190px; }
+  .member small { color: #4b5f63; }
+
+  /* CONTACT */
+  .contact { background: var(--night); color: white; max-width: none; }
+  .contact-inner { max-width: 1100px; margin: auto; }
+  .contact h2 { color: white; }
+  .contact .lead { color: #cfe0e2; }
+  .contact-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 24px; }
+  .contact-list div { border-top: 2px solid var(--sun); padding-top: 12px; }
+  .contact-list b { display: block; color: var(--sun); font-family: Georgia, serif; }
+  .contact-list a { text-decoration: none; }
+  .contact-list a:hover { text-decoration: underline; }
+
+  footer { background: #0d232b; color: #cfe0e2; text-align: center; padding: 22px 6%; font-size: .9rem; }
+
+  /* PHONE VIEW */
+  @media (max-width: 700px) {
+    .places { grid-template-columns: 1fr; }
+    .place.big { grid-column: auto; }
+    nav div a { margin-left: 10px; font-size: .8rem; }
+  }
+  /* ===== THEME BUTTON + DARK MODE ===== */
+  #themeBtn { margin-left: 22px; padding: 6px 14px; border: 2px solid var(--sun); border-radius: 20px;
+              background: transparent; color: white; font-size: .85rem; cursor: pointer; }
+  #themeBtn:hover { background: var(--sun); color: var(--night); }
+
+  body { transition: background .3s, color .3s; }
+
+  body[data-theme="dark"] { --snow: #0f1a1e; --ink: #e4eef0; }
+  body[data-theme="dark"] h2 { color: #e4eef0; }
+  body[data-theme="dark"] .lead { color: #9fb5b9; }
+  body[data-theme="dark"] table { background: #182a30; }
+  body[data-theme="dark"] tr:nth-child(even) td { background: #1d3239; }
+  body[data-theme="dark"] .steps h3 { color: #6fc2a8; }
+  body[data-theme="dark"] .member { background: #182a30; }
+  body[data-theme="dark"] .member small { color: #9fb5b9; }
+
+  /* ===== HOTELS SECTION ===== */
+  .hotel-note { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+  .price { font-weight: 700; color: var(--pine); white-space: nowrap; }
+  .mapbtn { display: inline-block; padding: 6px 14px; border-radius: 20px; background: var(--sun); color: var(--night);
+            font-size: .85rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .mapbtn:hover { background: var(--pine); color: white; }
+
+  body[data-theme="dark"] .price { color: #6fc2a8; }
+  body[data-theme="dark"] .hotel-note { color: #9fb5b9; }
+
+  /* ===== VIEW DETAILS BUTTON AND POPUP ===== */
+  .detailsBtn { align-self: flex-start; margin-top: 14px; padding: 9px 20px; border: none; border-radius: 25px;
+                background: var(--sun); color: var(--night); font-weight: 700; font-size: .9rem; cursor: pointer; }
+  .detailsBtn:hover { background: white; }
+
+  .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,.65);
+           padding: 20px; overflow-y: auto; }
+  .modal.open { display: block; }
+  .modal-box { position: relative; max-width: 650px; margin: 30px auto; padding: 32px;
+               background: var(--card, #ffffff); color: var(--text, #1d2b2f); border-radius: 16px; }
+  .modal-box h2 { color: var(--heading, #12303a); margin-bottom: 4px; }
+  .modal-box h4 { margin: 20px 0 6px; color: var(--accent, #2f6f5e); font-family: Georgia, serif; font-size: 1.1rem; }
+  .modal-box ul { padding-left: 22px; }
+  .close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border: none; border-radius: 50%;
+           background: var(--sun); color: var(--night); font-size: 1rem; cursor: pointer; }
+  .close:hover { background: var(--pine); color: white; }
+
+    /* ===== PACKING CHECKLIST ===== */
+  .checklist { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-bottom: 26px; }
+  .check-item { display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: #ffffff; color: var(--ink);
+                border-left: 4px solid var(--sun); border-radius: 8px; cursor: pointer; user-select: none;
+                transition: transform .2s, box-shadow .2s, background .2s; }
+  .check-item:hover { transform: translateX(6px); box-shadow: 0 4px 14px rgba(0,0,0,.12); background: #eef4f2; }
+  .check-item input { width: 20px; height: 20px; accent-color: var(--pine); cursor: pointer; }
+  .check-item.done span { text-decoration: line-through; opacity: .6; }
+
+  .progress-text { font-weight: 700; margin-bottom: 8px; }
+  .progress-track { height: 14px; background: #d9e4e1; border-radius: 10px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0; background: var(--pine); border-radius: 10px; transition: width .4s ease; }
+
+  .success { margin-top: 14px; padding: 12px 18px; border-radius: 8px; background: var(--sun); color: var(--night);
+             font-weight: 700; display: none; }
+  .success.show { display: block; }
+
+  .clearBtn { margin-top: 18px; padding: 10px 24px; border: 2px solid var(--pine); border-radius: 25px;
+              background: transparent; color: var(--pine); font-weight: 700; cursor: pointer; transition: background .2s, color .2s; }
+  .clearBtn:hover { background: var(--pine); color: white; }
+
+  body[data-theme="dark"] .check-item { background: #182a30; }
+  body[data-theme="dark"] .check-item:hover { background: #1d3239; }
+  body[data-theme="dark"] .progress-track { background: #26404a; }
+  body[data-theme="dark"] .clearBtn { color: #6fc2a8; border-color: #6fc2a8; }
+  body[data-theme="dark"] .clearBtn:hover { background: #6fc2a8; color: #0f1a1e; }
+
+    /* ===== CHOOSE YOUR EXPERIENCE ===== */
+  .options { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 26px; }
+  .option { padding: 12px 22px; border: 2px solid var(--pine); border-radius: 30px; background: #ffffff; color: var(--ink);
+            font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform .2s, background .2s, color .2s; }
+  .option:hover { transform: translateY(-3px); background: #eef4f2; }
+  .option.active { background: var(--pine); color: white; }
+
+  .reco { display: none; background: #ffffff; color: var(--ink); border-left: 5px solid var(--sun);
+          border-radius: 12px; padding: 28px; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+  .reco.show { display: block; }
+  .reco h3 { font-size: 1.7rem; color: var(--night); margin: 4px 0 8px; }
+  .reco-label { font-size: .9rem; color: var(--pine); font-weight: 700; }
+  .reco-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin: 20px 0; }
+  .reco-facts div { border-top: 2px solid var(--sun); padding-top: 8px; }
+  .reco-facts b { display: block; color: var(--pine); font-family: Georgia, serif; }
+
+  body[data-theme="dark"] .option { background: #182a30; }
+  body[data-theme="dark"] .option:hover { background: #1d3239; }
+  body[data-theme="dark"] .option.active { background: var(--pine); }
+  body[data-theme="dark"] .reco { background: #182a30; }
+  body[data-theme="dark"] .reco h3 { color: #e4eef0; }
+  body[data-theme="dark"] .reco-label, body[data-theme="dark"] .reco-facts b { color: #6fc2a8; }
+
+    /* ===== BACK TO TOP BUTTON ===== */
+  #topBtn { position: fixed; right: 22px; bottom: 22px; z-index: 50; width: 48px; height: 48px; border: none; border-radius: 50%;
+            background: var(--sun); color: var(--night); font-size: 1.4rem; font-weight: 700; cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,.3); opacity: 0; visibility: hidden;
+            transition: opacity .3s, visibility .3s, transform .2s, background .2s; }
+  #topBtn.show { opacity: 1; visibility: visible; }
+  #topBtn:hover { background: var(--pine); color: white; transform: translateY(-4px); }
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<nav>
+  <b>Devbhoomi Trails</b>
+  <div>
+    <a href="#experience">Experience</a>
+    <a href="#places">Places</a>
+    <a href="#season">Best time</a>
+    <a href="#hotels">Hotels</a>
+    <a href="#plan">Plan</a>
+    <a href="#packing">Packing</a>
+    <a href="#team">Team</a>
+    <a href="#contact">Contact</a>
+    <button id="themeBtn">Dark</button>
+  </div>
+</nav>
+
+<!-- TOP BANNER -->
+<header class="hero">
+  <h1>Find your next hill trip in Uttarakhand</h1>
+  <p>A student-made guide to five beautiful places, when to visit them, and how to plan the journey.</p>
+  <a class="btn" href="#places">See the places</a>
+  <div class="mountains"><span></span><span></span><span></span><span></span></div>
+</header>
+
+<!-- CHOOSE YOUR EXPERIENCE -->
+<section id="experience">
+  <h2>Choose Your Experience</h2>
+  <p class="lead">Pick the kind of trip you want and we will suggest a place.</p>
+
+  <div class="options">
+    <button class="option" data-type="mountains">🏔️ Mountains</button>
+    <button class="option" data-type="nature">🌿 Nature</button>
+    <button class="option" data-type="yoga">🧘 Peace &amp; Yoga</button>
+    <button class="option" data-type="snow">🏂 Snow &amp; Adventure</button>
+    <button class="option" data-type="wildlife">🐅 Wildlife</button>
+  </div>
+
+  <div class="reco" id="reco">
+    <span class="reco-label">Recommended for you</span>
+    <h3 id="recoName"></h3>
+    <p id="recoDesc"></p>
+    <div class="reco-facts">
+      <div><b>Best activity</b><span id="recoActivity"></span></div>
+      <div><b>Best time to visit</b><span id="recoTime"></span></div>
+      <div><b>Approximate budget</b><span id="recoBudget"></span></div>
+    </div>
+    <button class="detailsBtn" id="recoBtn">View Details</button>
+  </div>
+</section>
+
+<!-- PLACES -->
+<section id="places">
+  <h2>Five places worth the journey</h2>
+  <p class="lead">From lakes to river towns, here is where to go and what to do there.</p>
+  <div class="places">
+  <div class="place big p1"><h3>Nainital</h3><small>Boating on the lake, Mall Road walks, Snow View point</small>
+    <button class="detailsBtn" data-place="nainital">View Details</button></div>
+  <div class="place p2"><h3>Rishikesh</h3><small>River rafting, Ganga aarti, yoga</small>
+    <button class="detailsBtn" data-place="rishikesh">View Details</button></div>
+  <div class="place p3"><h3>Mussoorie</h3><small>Kempty Falls, cable car, cafes</small>
+    <button class="detailsBtn" data-place="mussoorie">View Details</button></div>
+  <div class="place p4"><h3>Auli</h3><small>Skiing and Himalayan views</small>
+    <button class="detailsBtn" data-place="auli">View Details</button></div>
+  <div class="place p5"><h3>Jim Corbett</h3><small>Jungle safari and wildlife</small>
+    <button class="detailsBtn" data-place="corbett">View Details</button></div>
+</div>
+</section>
+
+<!-- BEST TIME TABLE -->
+<section id="season">
+  <h2>When to go</h2>
+  <p class="lead">Pick your month before you pick your bags.</p>
+  <div class="tablebox">
+    <table>
+      <tr><th>Place</th><th>Best months</th><th>Why</th></tr>
+      <tr><td>Nainital</td><td>March to June</td><td>Pleasant weather for lake walks</td></tr>
+      <tr><td>Rishikesh</td><td>September to April</td><td>Rafting is safest after the monsoon</td></tr>
+      <tr><td>Mussoorie</td><td>April to June</td><td>Cool and clear views</td></tr>
+      <tr><td>Auli</td><td>December to February</td><td>Snow for skiing</td></tr>
+      <tr><td>Jim Corbett</td><td>November to June</td><td>Best chance to spot animals</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- HOTELS AND CHARGES -->
+<section id="hotels">
+  <h2>Where to stay</h2>
+  <p class="lead">The nearest hotel to each place, with the approximate charge per night.</p>
+  <div class="tablebox">
+    <table>
+      <tr>
+        <th>Place</th>
+        <th>Nearest hotel</th>
+        <th>Distance</th>
+        <th>Charge per night</th>
+        <th>Map</th>
+      </tr>
+      <tr>
+        <td>Nainital</td>
+        <td>Hotel Lake View</td>
+        <td>0.5 km from the lake</td>
+        <td class="price">₹1,500 to ₹3,500</td>
+        <td><a class="mapbtn" href="https://www.google.com/maps/search/hotels+near+Nainital+Lake" target="_blank">Open map</a></td>
+      </tr>
+      <tr>
+        <td>Rishikesh</td>
+        <td>Hotel Ganga Inn</td>
+        <td>1 km from Laxman Jhula</td>
+        <td class="price">₹1,000 to ₹3,000</td>
+        <td><a class="mapbtn" href="https://www.google.com/maps/search/hotels+near+Laxman+Jhula+Rishikesh" target="_blank">Open map</a></td>
+      </tr>
+      <tr>
+        <td>Mussoorie</td>
+        <td>Hotel Hill Top</td>
+        <td>0.3 km from Mall Road</td>
+        <td class="price">₹1,800 to ₹4,000</td>
+        <td><a class="mapbtn" href="https://www.google.com/maps/search/hotels+near+Mall+Road+Mussoorie" target="_blank">Open map</a></td>
+      </tr>
+      <tr>
+        <td>Auli</td>
+        <td>Hotel Snow Peak</td>
+        <td>1 km from the ski slope</td>
+        <td class="price">₹2,000 to ₹5,000</td>
+        <td><a class="mapbtn" href="https://www.google.com/maps/search/hotels+in+Auli" target="_blank">Open map</a></td>
+      </tr>
+      <tr>
+        <td>Jim Corbett</td>
+        <td>Corbett Jungle Resort</td>
+        <td>2 km from Dhikala gate</td>
+        <td class="price">₹2,500 to ₹6,000</td>
+        <td><a class="mapbtn" href="https://www.google.com/maps/search/hotels+near+Jim+Corbett+National+Park" target="_blank">Open map</a></td>
+      </tr>
+    </table>
+  </div>
+  <p class="hotel-note">Charges are approximate and change with the season, weekends and holidays. Check the latest price before booking.</p>
+</section>
+
+<!-- STEPS -->
+<section id="plan">
+  <h2>Plan your trip in four steps</h2>
+  <p class="lead">Follow these in order and you will not miss anything.</p>
+  <div class="steps">
+    <div><h3>1. Choose the place and month</h3><p>Use the table above to match your interest with the season.</p></div>
+    <div><h3>2. Book travel and stay</h3><p>Book trains and hotels early, especially for weekends and holidays.</p></div>
+    <div><h3>3. Pack for the weather</h3><p>Carry warm layers, comfortable shoes, a power bank and your ID.</p></div>
+    <div><h3>4. Travel responsibly</h3><p>Carry your waste back and respect local people and wildlife.</p></div>
+  </div>
+</section>
+
+<!-- TRAVEL PACKING CHECKLIST -->
+<section id="packing">
+  <h2>Travel Packing Checklist</h2>
+  <p class="lead">Tick each item as you pack it.</p>
+
+  <div class="checklist">
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Warm clothes</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Comfortable shoes</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Power bank</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>ID proof</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Water bottle</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Rain jacket</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>Sunscreen</span></label>
+    <label class="check-item"><input type="checkbox" class="packItem"><span>First-aid kit</span></label>
+  </div>
+
+  <p class="progress-text" id="packText">0 of 8 items packed</p>
+  <div class="progress-track"><div class="progress-fill" id="packBar"></div></div>
+  <p class="success" id="packSuccess">Ready for your trip! 🎉</p>
+  <button class="clearBtn" id="clearPack">Clear Checklist</button>
+</section>
+
+<!-- TEAM (no photos) -->
+<section id="team">
+  <p class="lead">Made for the Web Design project by: </p>
+  <div class="team">
+    <div class="member"><b>Shreya Gupta</b></div>
+  </div>
+</section>
+
+<!-- CONTACT (last section) -->
+<section id="contact" class="contact">
+  <div class="contact-inner">
+    <h2>Contact us</h2>
+    <p class="lead">Questions about the project or a trip? Reach us here.</p>
+    <div class="contact-list">
+      <div><b>Email</b><a href="mailto:yourname@example.com">yourname@gmail.com</a></div>
+      <div><b>Phone</b><a href="tel:+911234567890">+91 12345 67890</a></div>
+      <div><b>College</b>XYZ College, Ghaziabad, Uttar Pradesh</div>
+      <div><b>Instagram</b><a href="https://www.instagram.com/yourusername" target="_blank">@username</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS POPUP -->
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <button id="closeBtn" class="close">✕</button>
+    <h2 id="mTitle"></h2>
+    <div id="mBody"></div>
+  </div>
+</div>
+
+<button id="topBtn" title="Back to top" aria-label="Back to top">↑</button>
+
+<footer>
+  <p>&copy; 2026 Devbhoomi Trails. College project.</p>
+</footer>
+
+<script>
+  var btn = document.getElementById('themeBtn');
+
+  function setTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    btn.textContent = (theme === 'dark') ? 'Light' : 'Dark';
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+  }
+
+  var saved = 'light';
+  try { saved = localStorage.getItem('theme') || 'light'; } catch (e) {}
+  setTheme(saved);
+
+  btn.addEventListener('click', function () {
+    setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+</script>
+
+<script>
+  /* ===== DETAILS OF EACH PLACE: edit the text here ===== */
+  var places = {
+    nainital: {
+      name: "Nainital",
+      location: "Kumaon region, Nainital district, Uttarakhand. Around 2,000 m above sea level.",
+      attractions: ["Naini Lake", "Naina Devi Temple", "Snow View Point", "Tiffin Top", "Mall Road"],
+      things: ["Boating on the lake", "Ropeway ride to Snow View Point", "Horse riding", "Shopping and street food on Mall Road"],
+      budget: "About ₹6,000 to ₹12,000 per person for 3 days (stay, food and local travel).",
+      reach: ["Nearest railway station: Kathgodam, about 35 km", "Nearest airport: Pantnagar, about 65 km", "By road: via Haldwani, about 300 km from Delhi"]
+    },
+    rishikesh: {
+      name: "Rishikesh",
+      location: "Dehradun district, Uttarakhand, on the banks of the Ganga at the foothills of the Himalayas.",
+      attractions: ["Laxman Jhula and Ram Jhula", "Triveni Ghat", "Beatles Ashram", "Neelkanth Mahadev Temple"],
+      things: ["River rafting", "Ganga aarti in the evening", "Yoga and meditation", "Camping and cafe hopping"],
+      budget: "About ₹5,000 to ₹10,000 per person for 3 days (rafting and camping cost extra).",
+      reach: ["Nearest railway station: Rishikesh (Yog Nagari), also Haridwar about 25 km", "Nearest airport: Jolly Grant, Dehradun, about 35 km", "By road: about 240 km from Delhi"]
+    },
+    mussoorie: {
+      name: "Mussoorie",
+      location: "Dehradun district, Uttarakhand. Around 1,880 m above sea level, about 35 km from Dehradun.",
+      attractions: ["Kempty Falls", "Gun Hill", "Mall Road", "Lal Tibba", "Camel's Back Road"],
+      things: ["Cable car ride to Gun Hill", "Waterfall visit", "Evening walks on Mall Road", "Trying local cafes"],
+      budget: "About ₹7,000 to ₹14,000 per person for 3 days (stay, food and local travel).",
+      reach: ["Nearest railway station: Dehradun, about 35 km", "Nearest airport: Jolly Grant, Dehradun, about 60 km", "By road: about 290 km from Delhi"]
+    },
+    auli: {
+      name: "Auli",
+      location: "Chamoli district, Uttarakhand. Around 2,500 to 3,000 m above sea level, near Joshimath.",
+      attractions: ["Auli ski slopes", "Auli Artificial Lake", "Gorson Bugyal", "Views of Nanda Devi"],
+      things: ["Skiing in winter", "Ropeway ride from Joshimath", "Trekking to Gorson Bugyal", "Camping under the stars"],
+      budget: "About ₹8,000 to ₹15,000 per person for 3 days (skiing gear and lessons cost extra).",
+      reach: ["Nearest railway station: Rishikesh, about 250 km", "Nearest airport: Jolly Grant, Dehradun, about 275 km", "By road: via Joshimath. Check road and ropeway status before travelling"]
+    },
+    corbett: {
+      name: "Jim Corbett",
+      location: "Near Ramnagar, Nainital district, Uttarakhand. India's oldest national park, started in 1936.",
+      attractions: ["Dhikala zone", "Bijrani zone", "Corbett Falls", "Garjia Devi Temple", "Corbett Museum"],
+      things: ["Jeep safari", "Bird watching", "Nature walks", "Staying in a riverside resort"],
+      budget: "About ₹8,000 to ₹16,000 per person for 3 days (safari permits included).",
+      reach: ["Nearest railway station: Ramnagar, about 12 km", "Nearest airport: Pantnagar, about 80 km", "By road: about 250 km from Delhi. Some park zones close in the monsoon, so check dates"]
+    }
+  };
+  /* ===================================================== */
+
+  var modal = document.getElementById('modal');
+
+  function makeList(items) {
+    return '<ul>' + items.map(function (i) { return '<li>' + i + '</li>'; }).join('') + '</ul>';
+  }
+
+  function openDetails(key) {
+    var p = places[key];
+    document.getElementById('mTitle').textContent = p.name;
+    document.getElementById('mBody').innerHTML =
+      '<h4>Location</h4><p>' + p.location + '</p>' +
+      '<h4>Top attractions</h4>' + makeList(p.attractions) +
+      '<h4>Things to do</h4>' + makeList(p.things) +
+      '<h4>Approximate budget</h4><p>' + p.budget + '</p>' +
+      '<h4>How to reach</h4>' + makeList(p.reach);
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDetails() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.detailsBtn').forEach(function (b) {
+    b.addEventListener('click', function () { openDetails(b.getAttribute('data-place')); });
+  });
+  document.getElementById('closeBtn').addEventListener('click', closeDetails);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeDetails(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDetails(); });
+</script>
+
+<script>
+  var items = document.querySelectorAll('.packItem');
+  var packText = document.getElementById('packText');
+  var packBar = document.getElementById('packBar');
+  var packSuccess = document.getElementById('packSuccess');
+
+  function updatePacking() {
+    var count = 0;
+    items.forEach(function (box) {
+      box.parentElement.classList.toggle('done', box.checked);
+      if (box.checked) count++;
+    });
+    packText.textContent = count + ' of ' + items.length + ' items packed';
+    packBar.style.width = (count / items.length * 100) + '%';
+    packSuccess.classList.toggle('show', count === items.length);
+  }
+
+  items.forEach(function (box) { box.addEventListener('change', updatePacking); });
+
+  document.getElementById('clearPack').addEventListener('click', function () {
+    items.forEach(function (box) { box.checked = false; });
+    updatePacking();
+  });
+
+  updatePacking();
+</script>
+
+<script>
+  /* ===== RECOMMENDATIONS: edit the text here ===== */
+  var experiences = {
+    mountains: {
+      key: "mussoorie", name: "Mussoorie",
+      desc: "A hill town with cool air, waterfalls and wide views over the Doon valley.",
+      activity: "Cable car ride to Gun Hill",
+      time: "April to June",
+      budget: "₹7,000 to ₹14,000 per person for 3 days"
+    },
+    nature: {
+      key: "nainital", name: "Nainital",
+      desc: "A calm lake town surrounded by green hills, with peaceful walks and viewpoints.",
+      activity: "Boating on Naini Lake",
+      time: "March to June",
+      budget: "₹6,000 to ₹12,000 per person for 3 days"
+    },
+    yoga: {
+      key: "rishikesh", name: "Rishikesh",
+      desc: "A riverside town on the Ganga, known for ashrams, yoga classes and evening aarti.",
+      activity: "Yoga and meditation by the river",
+      time: "September to April",
+      budget: "₹5,000 to ₹10,000 per person for 3 days"
+    },
+    snow: {
+      key: "auli", name: "Auli",
+      desc: "A high-altitude ski destination with snow slopes and views of the Nanda Devi range.",
+      activity: "Skiing on the snow slopes",
+      time: "December to February",
+      budget: "₹8,000 to ₹15,000 per person for 3 days"
+    },
+    wildlife: {
+      key: "corbett", name: "Jim Corbett",
+      desc: "India's oldest national park, home to tigers, elephants and hundreds of bird species.",
+      activity: "Jeep safari",
+      time: "November to June",
+      budget: "₹8,000 to ₹16,000 per person for 3 days"
+    }
+  };
+  /* ================================================ */
+
+  var optionButtons = document.querySelectorAll('.option');
+  var recoCard = document.getElementById('reco');
+  var currentKey = '';
+
+  optionButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var e = experiences[btn.getAttribute('data-type')];
+      currentKey = e.key;
+
+      optionButtons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      document.getElementById('recoName').textContent = e.name;
+      document.getElementById('recoDesc').textContent = e.desc;
+      document.getElementById('recoActivity').textContent = e.activity;
+      document.getElementById('recoTime').textContent = e.time;
+      document.getElementById('recoBudget').textContent = e.budget;
+      recoCard.classList.add('show');
+    });
+  });
+
+  document.getElementById('recoBtn').addEventListener('click', function () {
+    openDetails(currentKey);
+  });
+</script>
+
+<script>
+  var topBtn = document.getElementById('topBtn');
+
+  window.addEventListener('scroll', function () {
+    topBtn.classList.toggle('show', window.scrollY > 400);
+  });
+
+  topBtn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+</body>
+</html>
